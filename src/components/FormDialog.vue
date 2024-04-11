@@ -114,15 +114,20 @@ export default {
     },
 
     test() {
-      let models = [];
-      for (let i = 0; i < 6; i++) {
-        models.push(this.inputsClient[i].model);
-      }
+      // let models = [];
+      // for (let i = 0; i < 6; i++) {
+      //   models.push(this.inputsClient[i].model);
+      // }
+        let map = new Map(this.inputsClient);
+        for (let keys of map.values()) {
+          console.log(keys)
+        }
     },
 
     addClient() {
       this.test()
-      this.$emit("addClient", { ...this.inputsClient });
+      // console.log(this.models)
+      // this.$emit("addClient", { ...this.inputsClient });
     },
   },
 };

@@ -1,7 +1,7 @@
 <template>
   <div>
     <FormDialog @addClient="addClient"></FormDialog>
-    <pre>{{ clients }}</pre>
+    <pre>{{  }}</pre>
     <CustomButton class="default">Новый клиент</CustomButton>
   </div>
 </template>
@@ -21,8 +21,8 @@ export default {
     FormDialog
   },
   methods: {
-    addClient(inputsClient) {
-      this.clients.push(inputsClient)
+    addClient(models) {
+      this.clients.push(models)
     }
   }
 }
