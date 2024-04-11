@@ -1,133 +1,104 @@
 <template>
   <div class="container">
-    <div v-for="input in inputsClient" :key="input.item" class="dialog">
-      <label :for="input.title">{{ input.title }}</label>
-      <input
-        class="input"
-        :type="input.type"
-        name=""
-        :id="input.title"
-        required
-        pattern=".{1,}"
-        autofocus
-        v-model="input.model"
-      />
+    <div v-show="step == 0">
+      <div v-for="input in dataClients" :key="input.item" class="dialog">
+        <label :for="input.title">{{ input.title }}</label>
+        <input
+          class="input"
+          :type="input.type"
+          name=""
+          :id="input.title"
+          required
+          autofocus
+          :maxlength="input.maxlength"
+          :pattern="input.pattern"
+          v-model="input.model"
+        />
+      </div>
+      <button @click="addClient()" class="default">Далее</button>
     </div>
-    <pre>{{ inputsClient }}</pre>
-    <button @click="addClient()">ssssss</button>
+
+    <div v-show="step == 1">
+      <div v-for="input in adressesClients" :key="input.item" class="dialog">
+        <label :for="input.title">{{ input.title }}</label>
+        <input
+          class="input"
+          :type="input.type"
+          name=""
+          :id="input.title"
+          required
+          pattern=".{1,}"
+          autofocus
+          v-model="input.model"
+        />
+      </div>
+      <button @click="addClient()" class="default">Далее</button>
+    </div>
+
+    <div v-show="step == 2">
+      <div v-for="input in documentsCliens" :key="input.item" class="dialog">
+        <label :for="input.title">{{ input.title }}</label>
+        <input
+          class="input"
+          :type="input.type"
+          name=""
+          :id="input.title"
+          required
+          pattern=".{1,}"
+          autofocus
+          v-model="input.model"
+        />
+      </div>
+      <button @click="addClient()" class="default">Далее</button>
+    </div>
   </div>
 </template>
 <script>
 // import CustomInput from "@/ui/CustomInput.vue";
+// import CustomButton from "@/ui/CustomButton.vue";
+import { dataClients, adressesClients, documentsCliens } from "@/api/clientsService.js";
 
 export default {
   name: "FormDialog",
   components: {
-    // CustomInput,
+    // CustomButton,
   },
   data() {
     return {
-      inputsClient: [
-        {
-          title: "Фамилия*",
-          model: "",
-          type: "text",
-          item: "surname",
-        },
-        {
-          title: "Имя*",
-          model: "",
-          type: "text",
-          item: "name",
-        },
-        {
-          title: "Отчество",
-          model: "",
-          type: "text",
-          item: "middleName",
-        },
-        {
-          title: "Дата рождения*",
-          model: "",
-          type: "text",
-          item: "birth",
-        },
-        // {
-        //   item: "Номер телефона*",
-        //   type: "text",
-        //   model: "surname"
-        // },
-        // {
-        //   item: "Пол",
-        //   type: "text",
-        //   model: "surname"
-        // },
-        // {
-        //   item: "Группа клиентов*",
-        //   type: "text",
-        //   model: "surname"
-        // },
-        // {
-        //   item: "Лечащий врач",
-        //   type: "text",
-        //   model: "surname"
-        // },
-        // {
-        //   item: "Не отправлять СМС.",
-        //   type: "radio",
-        //   model: "surname"
-        // },
-      ],
-      client: {
-        surname: "",
-        name: "",
-        middleName: "",
-        birth: "",
-        phone: "",
-        gender: "",
-        group: "",
-        doctor: "",
-        noSend: "",
-      },
-
-      adress: {
-        index: "",
-        country: "",
-        region: "",
-        city: "",
-        street: "",
-        house: "",
-      },
-
-      document: {
-        type: "",
-        series: "",
-        number: "",
-        whomIsssued: "",
-        dateIssued: "",
-      },
+      dataClients,
+      adressesClients,
+      documentsCliens,
+      step: 0,
     };
   },
   methods: {
-    check() {
-      console.log(this.inputsClient[0].model);
-    },
-
-    test() {
-      // let models = [];
-      // for (let i = 0; i < 6; i++) {
-      //   models.push(this.inputsClient[i].model);
-      // }
-        let map = new Map(this.inputsClient);
-        for (let keys of map.values()) {
-          console.log(keys)
-        }
-    },
-
     addClient() {
-      this.test()
-      // console.log(this.models)
-      // this.$emit("addClient", { ...this.inputsClient });
+      const models = {};
+      const value = dataClients;
+
+      models.surnameModel = value[0].model;
+      value[0].model = "";
+      models.nameModel = value[1].model;
+      value[1].model = "";
+      models.middleNameModel = value[2].model;
+      value[2].model = "";
+
+      models.birth = value[3].model;
+      value[3].model = "";
+      models.phone = value[4].model;
+      value[4].model = "";
+      models.gender = value[5].model;
+      value[5].model = "";
+
+      models.group = value[6].model;
+      value[6].model = "";
+      models.doctor = value[7].model;
+      value[7].model = "";
+      models.noSend = value[8].model;
+      value[8].model = "";
+      console.log(value);
+      this.$emit("addClient", models);
+      this.step++
     },
   },
 };
