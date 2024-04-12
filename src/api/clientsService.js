@@ -43,12 +43,12 @@ export const dataClients = [
     type: "text",
     item: "group",
   },
-  {
-    title: "Лечащий врач",
-    model: "",
-    type: "text",
-    item: "doctor",
-  },
+  // {
+  //   title: "Лечащий врач",
+  //   model: "",
+  //   type: "text",
+  //   item: "doctor",
+  // },
   {
     title: "Не отправлять СМС",
     model: "",
@@ -97,12 +97,12 @@ export const adressesClients = [
 ];
 
 export const documentsCliens = [
-  {
-    title: "Тип документа",
-    model: "",
-    type: "text",
-    item: "type",
-  },
+  // {
+  //   title: "Тип документа",
+  //   model: "",
+  //   type: "text",
+  //   item: "type",
+  // },
   {
     title: "Серия",
     model: "",

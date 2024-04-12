@@ -1,6 +1,10 @@
 <template>
   <div>
     <FormDialog @addClient="addClient"></FormDialog>
+    <!-- <a href="http://localhost:8081/" v-for="(item, i) in clients" :key="item.model">
+      <p>{{ clients[i]?.surnameModel }}</p>
+      <p>{{ clients[i]?.nameModel }}</p>
+    </a> -->
     <div v-for="(item, i) in clients" :key="item.model" class="clients">
       <div class="clients__surname">
         <p>Фамилия:</p>
@@ -46,16 +50,73 @@
         <p>Не отправлять СМС:</p>
         <div>{{ clients[i]?.noSend }}</div>
       </div>
+
+      <div class="clients__surname">
+        <p>Индекс:</p>
+        <div>{{ clients[i]?.index }}</div>
+      </div>
+
+      <div class="clients__surname">
+        <p>Страна:</p>
+        <div>{{ clients[i]?.country }}</div>
+      </div>
+
+      <div class="clients__surname">
+        <p>Область:</p>
+        <div>{{ clients[i]?.region }}</div>
+      </div>
+
+      <div class="clients__surname">
+        <p>Город:</p>
+        <div>{{ clients[i]?.city }}</div>
+      </div>
+
+      <div class="clients__surname">
+        <p>Улица:</p>
+        <div>{{ clients[i]?.street }}</div>
+      </div>
+
+      <div class="clients__surname">
+        <p>Дом:</p>
+        <div>{{ clients[i]?.house }}</div>
+      </div>
+
+      <div class="clients__surname">
+        <p>Тип документа:</p>
+        <div>{{ clients[i]?.type }}</div>
+      </div>
+
+      <div class="clients__surname">
+        <p>Серия:</p>
+        <div>{{ clients[i]?.series }}</div>
+      </div>
+
+      <div class="clients__surname">
+        <p>Номер:</p>
+        <div>{{ clients[i]?.number }}</div>
+      </div>
+
+      <div class="clients__surname">
+        <p>Кем выдан:</p>
+        <div>{{ clients[i]?.whomIssued }}</div>
+      </div>
+
+      <div class="clients__surname">
+        <p>Дата выдачи:</p>
+        <div>{{ clients[i]?.dateIssue }}</div>
+      </div>
     </div>
+
+    
     <CustomButton class="default">Новый клиент</CustomButton>
     <label for="cars">Choose a car:</label>
 
-    <select name="cars" id="cars">
+    <!-- <select name="cars" id="cars" multiple>
       <option value="volvo">Volvo</option>
       <option value="saab">Saab</option>
       <option value="opel">Opel</option>
       <option value="audi">Audi</option>
-    </select>
+    </select> -->
   </div>
 </template>
 <script>
@@ -84,7 +145,7 @@ export default {
 
 <style lang="scss" scoped>
 .clients {
-  display: flex;
+  // display: flex;
   background-color: #cecece;
   &__surname {
     padding: 20px;
